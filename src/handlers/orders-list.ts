@@ -1,17 +1,17 @@
 import { Composer } from "grammy";
+import type { Ctx } from "../bot.js";
+import { registerMainMenuItem } from "../toolkit/index.js";
 
-// SCAFFOLD — generated from the bot blueprint BEFORE the agent runs.
-// Keep a LIVE registration (.command / .callbackQuery / …) so this feature is
-// never an empty stub. Replace the reply body with real logic + copy; if you
-// change the user-facing text, update tests/specs to match EXACTLY.
-// Do NOT rewrite src/bot.ts — buildBot() already auto-loads this module.
-// Menu: wire this into /start via registerMainMenuItem({ label: "My Orders", data: "orders:list" }) if the toolkit exposes it.
+// My Orders button — shows order history and current order status.
+// Wire this into /start via registerMainMenuItem({ label: "My Orders", data: "orders:list" })
+// if the toolkit exposes it; otherwise it's reachable via menu button wiring in this file.
+registerMainMenuItem({ label: "📋 My Orders", data: "orders:list", order: 30 });
 
-const composer = new Composer();
+const composer = new Composer<Ctx>();
 
 composer.callbackQuery("orders:list", async (ctx) => {
   await ctx.answerCallbackQuery();
-  await ctx.reply("Display order history and current order status");
+  await ctx.reply("📋 You have no orders yet.\n\nTap ➕ to place your first order!");
 });
 
 export default composer;

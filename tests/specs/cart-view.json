@@ -7,7 +7,7 @@
           {
             "method": "sendMessage",
             "payload": {
-              "text": "Show current cart contents and subtotal"
+              "text": "🛒 Your cart is empty. Tap ➕ to add coffee or snacks!"
             }
           }
         ],

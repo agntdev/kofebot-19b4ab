@@ -7,7 +7,7 @@
           {
             "method": "sendMessage",
             "payload": {
-              "text": "Display order history and current order status"
+              "text": "📋 You have no orders yet.\n\nTap ➕ to place your first order!"
             }
           }
         ],

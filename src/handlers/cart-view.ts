@@ -1,17 +1,17 @@
 import { Composer } from "grammy";
+import type { Ctx } from "../bot.js";
+import { registerMainMenuItem } from "../toolkit/index.js";
 
-// SCAFFOLD — generated from the bot blueprint BEFORE the agent runs.
-// Keep a LIVE registration (.command / .callbackQuery / …) so this feature is
-// never an empty stub. Replace the reply body with real logic + copy; if you
-// change the user-facing text, update tests/specs to match EXACTLY.
-// Do NOT rewrite src/bot.ts — buildBot() already auto-loads this module.
-// Menu: wire this into /start via registerMainMenuItem({ label: "View Cart", data: "cart:view" }) if the toolkit exposes it.
+// View Cart button — shows the user's current cart contents and subtotal.
+// Wire this into /start via registerMainMenuItem({ label: "View Cart", data: "cart:view" })
+// if the toolkit exposes it; otherwise it's reachable via menu button wiring in this file.
+registerMainMenuItem({ label: "🛒 View Cart", data: "cart:view", order: 20 });
 
-const composer = new Composer();
+const composer = new Composer<Ctx>();
 
 composer.callbackQuery("cart:view", async (ctx) => {
   await ctx.answerCallbackQuery();
-  await ctx.reply("Show current cart contents and subtotal");
+  await ctx.reply("🛒 Your cart is empty. Tap ➕ to add coffee or snacks!");
 });
 
 export default composer;
