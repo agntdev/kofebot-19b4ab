@@ -7,7 +7,7 @@
           {
             "method": "sendMessage",
             "payload": {
-              "text": "Browse categorized menu items with add-to-cart buttons"
+              "text": "☕️ Browse our menu categories below to see what's available."
             }
           }
         ],
